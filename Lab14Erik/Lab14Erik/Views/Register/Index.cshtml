@@ -3,12 +3,25 @@
 @{
     ViewData["Title"] = "Index";
 }
+<head>
+    <link href="~/StyleSheet.css" rel="stylesheet" type="text/css" />
+</head>
 
 <h2>Index</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+<form asp-controller="Register" asp-action="Index">
+    <p>
+
+        Search:<input type="text" name="Search"/>
+        <input type="submit" value="Filter" />
+
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>
