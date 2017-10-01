@@ -19,9 +19,15 @@ namespace Lab14Erik.Controllers
         }
 
         // GET: Register
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string search)
         {
-            return View(await _context.Student.ToListAsync());
+            var students = from s in _context.Student
+                           select s;
+            if(!String.IsNullOrEmpty(search))
+            {
+                students = students.Where(t => t.Name.Contains(search));
+            }
+            return View(await students.ToListAsync());
         }
 
         // GET: Register/Details/5
